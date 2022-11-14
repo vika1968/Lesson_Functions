@@ -46,7 +46,7 @@ var GenerateValidAgeOfAnimal = function (animalType) {
     if (animalType == null || animalType.length == 0) {
         throw new Error("The type of animal can't be empty.");
     }
-    if (!animalTypes.includes(animalType)) { // includes doesn't work in this compiler version 
+    if (animalTypes.findIndex(function (element) { return element == animalType; }) == -1) {
         throw new Error("The type of animal can only be 'dog' or 'cat' or 'mouse' or 'ant' or 'fish'.");
     }
     else {

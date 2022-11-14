@@ -56,13 +56,11 @@ try{
  //---- Generate valid age of animals ----
 console.log("------------ 2. Generate valid age of animals ------------------")
 
-let GenerateValidAgeOfAnimal = (animalType: string) => {
+let GenerateValidAgeOfAnimal = (animalType: string) => {   
     if(animalType == null || animalType.length == 0){
         throw new Error("The type of animal can't be empty.")
-    }
-
-    if (!animalTypes.includes(animalType)){// includes doesn't work in this compiler version 
-  
+    }  
+    if (animalTypes.findIndex(element => element == animalType) == -1) {
         throw new Error("The type of animal can only be 'dog' or 'cat' or 'mouse' or 'ant' or 'fish'.")
     }
     else{             
@@ -165,26 +163,26 @@ console.log("----------- 5. Update the data of 1 animal in the array -----------
 console.log(" The animal with ID number " + arr[animalCount - 3].id  + " will be updated.")
 
 let UpdateArrOfAnimals = (animalToBeChanged: animal, name: string, age: number, type: string ,inputArray: animal [] = []) =>{
-        if(inputArray == null || inputArray.length == 0){
-            throw new Error("The array can't be empty.")
-        }
+    if(inputArray == null || inputArray.length == 0){
+        throw new Error("The array can't be empty.")
+    }
 
-        else if(animalToBeChanged == null || animalToBeChanged.id <=0){
-            throw new Error("The updated anymal can't be empty or ID identifier <= 0.")
-        }
+    else if(animalToBeChanged == null || animalToBeChanged.id <=0){
+        throw new Error("The updated anymal can't be empty or ID identifier <= 0.")
+    }
 
-        else{
-            for (let i = 0; i < inputArray.length; i ++){
-                if(inputArray[i].id == animalToBeChanged.id)  {
-                    inputArray[i].name = name
-                    inputArray[i].age = age 
-                    inputArray[i].type = type        
-                    break
-                }
-            
-             }
-        return inputArray
-        }
+    else{
+        for (let i = 0; i < inputArray.length; i ++){
+            if(inputArray[i].id == animalToBeChanged.id)  {
+                inputArray[i].name = name
+                inputArray[i].age = age 
+                inputArray[i].type = type        
+                break
+            }
+        
+            }
+    return inputArray
+    }
 }
 
 console.log("-----------We show an updated array. ------------------")
